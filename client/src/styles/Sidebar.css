@@ -1,0 +1,7 @@
+.sidebar{
+    width: 300px;
+    height: 100%;
+    background-color: #EEEEEE;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
