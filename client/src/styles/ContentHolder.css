@@ -3,4 +3,5 @@
   height: 900px;
   background-color: #FFFFFF;
   border-radius: 40px;
+  display: flex;
 }

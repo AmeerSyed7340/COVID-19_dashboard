@@ -4,4 +4,19 @@
     background-color: #EEEEEE;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
+    display: flex;
+    justify-content: center;    
+}
+
+input{
+    border-radius: 5px;
+    height: 20px;
+    margin-top: 150px;
+}
+p{
+    margin-top: 155px;
+    padding-left: 20px;
+}
+p:hover{
+    cursor: pointer;
 }
