@@ -1,4 +1,5 @@
 import "../styles/Comp2.css";
+
 function Comp2({ eachState }) {
   return<>
     <div className="comp2">
