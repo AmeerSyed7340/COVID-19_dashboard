@@ -2,7 +2,7 @@ import '../styles/Comp1.css';
 function Comp1({states}) {
   return <>
     <div className="comp1">
-      <h1>Comp1</h1>
+      <h1>All states</h1>
       <div className="comp1-data">
         {states.map((state, index) => {
           return <div key={index} className="state">

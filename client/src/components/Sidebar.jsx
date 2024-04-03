@@ -1,14 +1,13 @@
 import '../styles/Sidebar.css'; 
 import { useEffect, useState } from 'react';
 
-function Sidebar({setStates, setEachState}) {
+function Sidebar({setStates, setEachState, setStateName}) {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('https://disease.sh/v3/covid-19/states');
-      const data = await response.json();
-      console.log(data);
+      const data = await response.json();      
       setStates(data);
     }
     fetchData();
@@ -20,10 +19,11 @@ function Sidebar({setStates, setEachState}) {
       return;
     }else{
       console.log(query);
+      setStateName(query);
       const response = await fetch(`https://disease.sh/v3/covid-19/states/${encodeURIComponent(query)}`);
       const data = await response.json();
       setEachState(data);
-      console.log(data);
+      //console.log(data);
       setQuery('');
     }
     
