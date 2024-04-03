@@ -5,3 +5,8 @@
   border-radius: 40px;
   display: flex;
 }
+
+.main-content {
+  padding: 50px;
+  display: flex;
+}
