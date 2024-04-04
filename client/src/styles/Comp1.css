@@ -1,27 +1,9 @@
 .comp1{
     width: 700px;
-    height: 450px;
+    height: 350px;
     border-radius: 20px;
     background-color: #F4F3F3;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); 
     overflow: auto;
+    margin-left: 55px;
 }
-
-/* This styles the scrollbar track (the part the thumb slides within) */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px; /* Adjust as needed */
-  }
-  
-  /* This styles the scrollbar thumb (the part that is draggable) */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px; /* Adjust as needed */
-  }
-  
-  /* This styles the scrollbar itself (overall width and height) */
-  ::-webkit-scrollbar {
-    width: 10px; /* Adjust width of the scrollbar */
-    height: 10px; /* Adjust height of the scrollbar for horizontal scrolling */
-  }
-  

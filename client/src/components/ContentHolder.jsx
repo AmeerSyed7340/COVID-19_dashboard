@@ -20,6 +20,7 @@ function ContentHolder() {
         </div>
         <div className="main-content-bot">
           <Comp3 stateName={stateName} />
+          <Comp4 stateName={stateName} />
         </div>
       </div>
     </div>
