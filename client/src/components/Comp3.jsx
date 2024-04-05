@@ -32,7 +32,7 @@ function Comp3({ stateName }) {
   function drawChart() {
     const margin = { top: 20, right: 30, bottom: 30, left: 50 },
       width = 500 - margin.left - margin.right, // Adjusted to fit .comp3 width
-      height = 350 - margin.top - margin.bottom; // Adjusted to fit .comp3 height
+      height = 300 - margin.top - margin.bottom; // Adjusted to fit .comp3 height
 
     // Clear the canvas from any previous drawings
     d3.select(d3Container.current).selectAll("*").remove();
