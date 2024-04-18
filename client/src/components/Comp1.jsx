@@ -52,7 +52,7 @@ function Comp1({ states }) {
        .attr('opacity', 0.75)
        .on('mouseover', (event, d) => {
          tooltip.style('display', 'block')
-                .html(`<strong>State:</strong> ${d.state}<br/><strong>Cases:</strong> ${d.cases}`)
+                .html(`<strong>Cases:</strong> ${d.cases}`)
                 .style('left', `${event.pageX}px`)
                 .style('top', `${event.pageY}px`);
        })
