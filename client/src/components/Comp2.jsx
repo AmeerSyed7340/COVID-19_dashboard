@@ -131,7 +131,7 @@ function Comp2({ eachState }) {
 
   return (
     <>
-      <div className="comp2">
+      <div className="">
         <h1>Each state cases</h1>
         <div className="bar-chart-container" ref={d3Container}>
           {/* The bar chart will be appended here */}

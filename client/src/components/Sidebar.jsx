@@ -32,7 +32,7 @@ function Sidebar({ setStates, setEachState, setStateName }) {
     }
   };
   return (
-    <div className='h-screen w-full bg-neutral-600 flex items-center justify-evenly'>
+    <div className='h-screen w-[300px] bg-neutral-600 flex items-center justify-evenly'>
       <input
         type="text"
         value={query}

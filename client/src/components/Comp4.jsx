@@ -101,7 +101,7 @@ const Comp4 = () => {
     svg.append("g").call(d3.axisLeft(y));
   };
 
-  return <div className="comp4" ref={d3Container}></div>;
+  return <div className="" ref={d3Container}></div>;
 };
 
 export default Comp4;
