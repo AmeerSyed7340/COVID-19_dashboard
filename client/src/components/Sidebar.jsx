@@ -8,7 +8,11 @@ function Sidebar({ setStates, setEachState, setStateName }) {
     async function fetchData() {
       const response = await fetch("https://disease.sh/v3/covid-19/states");
       const data = await response.json();
-      setStates(data);
+      const excludedStates = ['Diamond Princess Ship','Wuhan Repatriated', 'Grand Princess Ship', 'Federal Prisons', 'Navajo Nation', 'US Military', 'Veteran Affairs', 'American Samoa', 'Northern Mariana Islands', 'United States Virgin Islands', 'District Of Columbia', 'Puerto Rico', 'Guam'];
+
+      // Filter out the excluded states
+      const filteredData = data.filter((item) => !excludedStates.includes(item.state));
+      setStates(filteredData);
     }
     fetchData();
   }, []);
