@@ -1,4 +1,3 @@
-import "../styles/Sidebar.css";
 import { useEffect, useState } from "react";
 
 function Sidebar({ setStates, setEachState, setStateName }) {
@@ -33,14 +32,14 @@ function Sidebar({ setStates, setEachState, setStateName }) {
     }
   };
   return (
-    <div className="sidebar">
+    <div className='h-screen w-full bg-neutral-600 flex items-center justify-evenly'>
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
       />
-      <p onClick={handleSearch} className="search">
+      <p onClick={handleSearch} className='text-red-800 cursor-pointer font-bold'>
         Search
       </p>
     </div>

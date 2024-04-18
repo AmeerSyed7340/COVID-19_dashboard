@@ -11,7 +11,7 @@ function ContentHolder() {
   const [eachState, setEachState] = useState({}); //[state, setState]
   const [stateName, setStateName] = useState(''); //[stateName, setStateName
   return (
-    <div className="content-holder">
+    <div className='flex h-screen w-screen'>
       <Sidebar setStates={setStates} setEachState={setEachState} setStateName={setStateName}/>
       <div className="main-content">
         <div className="main-content-top">
