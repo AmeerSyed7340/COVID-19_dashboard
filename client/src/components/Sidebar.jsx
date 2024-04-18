@@ -1,37 +1,44 @@
-import '../styles/Sidebar.css'; 
-import { useEffect, useState } from 'react';
+import "../styles/Sidebar.css";
+import { useEffect, useState } from "react";
 
-function Sidebar({setStates, setEachState, setStateName}) {
-  const [query, setQuery] = useState('');
+function Sidebar({ setStates, setEachState, setStateName }) {
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://disease.sh/v3/covid-19/states');
-      const data = await response.json();      
+      const response = await fetch("https://disease.sh/v3/covid-19/states");
+      const data = await response.json();
       setStates(data);
     }
     fetchData();
   }, []);
 
-  const handleSearch = async() => {
-    if(query === '') {
-      alert('Please enter a search query');
+  const handleSearch = async () => {
+    if (query === "") {
+      alert("Please enter a search query");
       return;
-    }else{
-      console.log(query);
+    } else {
       setStateName(query);
-      const response = await fetch(`https://disease.sh/v3/covid-19/states/${encodeURIComponent(query)}`);
+      const response = await fetch(
+        `https://disease.sh/v3/covid-19/states/${encodeURIComponent(query)}`
+      );
       const data = await response.json();
       setEachState(data);
       //console.log(data);
-      setQuery('');
+      setQuery("");
     }
-    
   };
   return (
     <div className="sidebar">
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search..." />
-      <p onClick={handleSearch} className='search'>Search</p>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search..."
+      />
+      <p onClick={handleSearch} className="search">
+        Search
+      </p>
     </div>
   );
 }

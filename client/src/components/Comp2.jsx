@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from "react";
 import * as d3 from "d3";
 
 function Comp2({ eachState }) {
-  console.log(eachState);
   const d3Container = useRef(null);
 
   useEffect(() => {
