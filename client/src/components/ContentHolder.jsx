@@ -18,7 +18,7 @@ function ContentHolder() {
         setStateName={setStateName}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[200px] w-screen">
+      <div className="grid grid-cols-1 sm:grid-cols-2 w-screen">
         <Comp1 states={states} />
         <Comp2 eachState={eachState} />
         <Comp3 stateName={stateName} />

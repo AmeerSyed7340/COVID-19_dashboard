@@ -92,7 +92,7 @@ function Comp3({ stateName }) {
 
   return (
     <>
-      <div className="">
+      <div className='rounded-md shadow-md bg-gradient-to-b from-slate-500 to-white'>
         <h1>Cases in last 30 days in {stateName}</h1>
         <div ref={d3Container}></div> {/* D3 chart will append here */}
       </div>

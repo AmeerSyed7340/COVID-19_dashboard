@@ -101,7 +101,7 @@ const Comp4 = () => {
     svg.append("g").call(d3.axisLeft(y));
   };
 
-  return <div className="" ref={d3Container}></div>;
+  return <div className='rounded-md shadow-md bg-gradient-to-b from-gray-300 to-white' ref={d3Container}></div>;
 };
 
 export default Comp4;
