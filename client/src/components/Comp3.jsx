@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
 import "../styles/Comp3.css";
 
 function Comp3({ stateName }) {
   const [stateLast30Days, setStateLast30Days] = useState([]);
-  const d3Container = useRef(null);
+  const svgContainerRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,9 +12,7 @@ function Comp3({ stateName }) {
         return;
       }
       const response = await fetch(
-        `https://disease.sh/v3/covid-19/nyt/states/${encodeURIComponent(
-          stateName
-        )}?lastdays=30`
+        `https://disease.sh/v3/covid-19/nyt/states/${encodeURIComponent(stateName)}?lastdays=30`
       );
       const data = await response.json();
       setStateLast30Days(data);
@@ -24,80 +22,70 @@ function Comp3({ stateName }) {
   }, [stateName]);
 
   useEffect(() => {
-    if (stateLast30Days.length > 0) {
-      drawChart();
+    if (stateLast30Days.length > 0 && svgContainerRef.current) {
+      const resizeObserver = new ResizeObserver(entries => {
+        if (entries && entries.length) {
+          const { width, height } = entries[0].contentRect;
+          drawChart(width, height);
+        }
+      });
+      resizeObserver.observe(svgContainerRef.current);
+
+      return () => resizeObserver.disconnect();
     }
   }, [stateLast30Days]);
 
-  function drawChart() {
-    const margin = { top: 20, right: 30, bottom: 30, left: 50 },
-      width = 500 - margin.left - margin.right, // Adjusted to fit .comp3 width
-      height = 300 - margin.top - margin.bottom; // Adjusted to fit .comp3 height
+  function drawChart(width, height) {
+    // Setup margins and inner dimensions
+    const margin = { top: 20, right: 20, bottom: 40, left: 60 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
 
-    // Clear the canvas from any previous drawings
-    d3.select(d3Container.current).selectAll("*").remove();
+    d3.select(svgContainerRef.current).selectAll("*").remove();
 
-    const svg = d3
-      .select(d3Container.current)
+    const svg = d3.select(svgContainerRef.current)
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", width)
+      .attr("height", height)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Add X axis --> it is a date format
-    const x = d3
-      .scaleTime()
-      .domain(d3.extent(stateLast30Days, (d) => new Date(d.date)))
-      .range([0, width]);
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(
-        d3
-          .axisBottom(x)
-          .ticks(d3.timeDay.every(5)) // One tick per day; adjust as needed
-          .tickFormat(d3.timeFormat("%d-%b"))
-      ); // Fewer and formatted ticks);
+    // Define the x-axis scale
+    const x = d3.scaleTime()
+      .domain(d3.extent(stateLast30Days, d => new Date(d.date)))
+      .range([0, innerWidth]);
 
-    // Replace with dynamic range adjustment
-    const minCases = d3.min(stateLast30Days, (d) => d.cases);
-    const maxCases = d3.max(stateLast30Days, (d) => d.cases);
-    const padding = (maxCases - minCases) * 0.1;
+    svg.append("g")
+      .attr("transform", `translate(0,${innerHeight})`)
+      .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b %d")));
 
-    // Add Y axis
-    const y = d3
-      .scaleLinear()
-      .domain([minCases - padding, maxCases + padding])
-      .range([height, 0]);
-    svg.append("g").call(d3.axisLeft(y).tickFormat(d3.format("~s"))); // Apply the tick format here
+    // Define the y-axis scale
+    const minCases = d3.min(stateLast30Days, d => d.cases);
+    const maxCases = d3.max(stateLast30Days, d => d.cases);
+    const y = d3.scaleLinear()
+      .domain([minCases, maxCases])  // Dynamically setting y-axis range from min to max cases
+      .range([innerHeight, 0]);
 
-    // Add the line for cases
-    svg
-      .append("path")
+    svg.append("g").call(d3.axisLeft(y));
+
+    // Define the line path generator
+    svg.append("path")
       .datum(stateLast30Days)
       .attr("fill", "none")
       .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x((d) => x(new Date(d.date)))
-          .y((d) => y(d.cases))
+      .attr("stroke-width", 2)
+      .attr("d", d3.line()
+        .x(d => x(new Date(d.date)))
+        .y(d => y(d.cases))
       );
-
-    // Optionally, repeat the above block for deaths with a different stroke color
   }
 
   return (
-    <>
-      <div className='rounded-md shadow-md bg-gradient-to-b from-slate-500 to-white'>
-        <h1>Cases in last 30 days in {stateName}</h1>
-        <div ref={d3Container}></div> {/* D3 chart will append here */}
-      </div>
-    </>
+    <div ref={svgContainerRef} className='rounded-md shadow-md bg-gradient-to-b from-slate-500 to-white' style={{ width: '100%', height: '100%' }}>
+      <h1>Cases in last 30 days in {stateName}</h1>
+    </div>
   );
 }
 
 export default Comp3;
+
