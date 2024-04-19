@@ -75,7 +75,7 @@ function Comp1({ states }) {
   };
 
   return (
-    <div ref={wrapperRef} className="h-[500px] w-full rounded-md shadow-md bg-gradient-to-b from-slate-500 to-white">
+    <div ref={wrapperRef} className="h-full w-full rounded-md shadow-md bg-gradient-to-b from-slate-500 to-white">
       <svg ref={svgRef} style={{ width: "100%", height: "100%" }}></svg>
       <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', pointerEvents: 'none', display: 'none', backgroundColor: 'white', border: '1px solid black', padding: '5px', zIndex: 10 }}></div>
     </div>
