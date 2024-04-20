@@ -1,17 +1,20 @@
-import React , {useState} from "react";
+import React, { useState, useContext } from "react";
 import { CiSearch } from "react-icons/ci";
+import { SearchContext } from "../context/SearchContext";
 
 const Navbar = () => {
-    const[inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  const { updateCountry } = useContext(SearchContext);
 
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-    const handleClick = () => {
-        console.log(inputValue);
-        setInputValue('');
-    }
+  const handleClick = () => {
+    console.log(inputValue);
+    updateCountry(inputValue);
+    setInputValue("");
+  };
   return (
     <div className="flex space-x-8">
       <div>
@@ -26,7 +29,7 @@ const Navbar = () => {
           value={inputValue}
           onChange={handleInputChange}
         />
-        <div className='flex justify-center items-center'>
+        <div className="flex justify-center items-center">
           <CiSearch className="w-[30px]" onClick={handleClick} />
         </div>
       </div>

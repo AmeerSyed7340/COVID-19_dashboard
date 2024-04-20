@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import Navbar from "./components/Navbar";
+import { SearchContext } from "./context/SearchContext";
 
 const App = () => {
+  const{search} = useContext(SearchContext);
   return (
     <div>
-      <div className='flex justify-center items-center bg-off-white shadow-md py-4'>
+      {/* context provider */}
+
+      <div className="flex justify-center items-center bg-off-white shadow-md py-4">
         <Navbar />
       </div>
 
@@ -12,11 +16,13 @@ const App = () => {
       <div>
         {/*Country name*/}
         <div>
-          <p>Results for country name</p>
+          <p>Results for {search}</p>
         </div>
 
         {/*Country flag*/}
-        <div><img src="" alt="" /></div>
+        <div>
+          <img src="" alt="" />
+        </div>
 
         {/*Country Stats*/}
         <div>
@@ -47,9 +53,7 @@ const App = () => {
         {/*Vaccination info*/}
         <div>
           <p></p>
-          <div>
-            {/*bar chart*/}
-          </div>
+          <div>{/*bar chart*/}</div>
         </div>
 
         {/*Btn to scroll up*/}
