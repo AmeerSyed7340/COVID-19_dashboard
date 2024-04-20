@@ -1,13 +1,14 @@
-import ContentHolder from "./components/ContentHolder";
-import "./App.css";
+import React from "react";
+import Navbar from "./components/Navbar";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <ContentHolder />
-      
-    </>
+    <div>
+      <div className='flex justify-center items-center bg-off-white shadow-md py-4'>
+        <Navbar />
+      </div>
+    </div>
   );
-}
+};
 
 export default App;
