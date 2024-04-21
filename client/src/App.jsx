@@ -1,9 +1,11 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Navbar from "./components/Navbar";
 import { SearchContext } from "./context/SearchContext";
+import Statistics from "./components/Statistics";
 
 const App = () => {
-  const{search} = useContext(SearchContext);
+  const { search, flag } = useContext(SearchContext);
+  console.log(search);
   return (
     <div>
       {/* context provider */}
@@ -21,27 +23,12 @@ const App = () => {
 
         {/*Country flag*/}
         <div>
-          <img src="" alt="" />
+          <img src={flag} alt="country_flag" />
         </div>
 
         {/*Country Stats*/}
         <div>
-          <div>
-            <p></p>
-            <p></p>
-          </div>
-          <div>
-            <p></p>
-            <p></p>
-          </div>
-          <div>
-            <p></p>
-            <p></p>
-          </div>
-          <div>
-            <p></p>
-            <p></p>
-          </div>
+          <Statistics />
         </div>
 
         {/*Deaths*/}
@@ -49,17 +36,16 @@ const App = () => {
           <p></p>
           <p></p>
         </div>
+      </div>
+      {/*Vaccination info*/}
+      <div>
+        <p></p>
+        <div>{/*bar chart*/}</div>
+      </div>
 
-        {/*Vaccination info*/}
-        <div>
-          <p></p>
-          <div>{/*bar chart*/}</div>
-        </div>
-
-        {/*Btn to scroll up*/}
-        <div>
-          <button>Scroll up</button>
-        </div>
+      {/*Btn to scroll up*/}
+      <div>
+        <button>Scroll up</button>
       </div>
     </div>
   );

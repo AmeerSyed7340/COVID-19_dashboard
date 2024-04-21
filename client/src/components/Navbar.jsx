@@ -1,16 +1,43 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { SearchContext } from "../context/SearchContext";
 
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("");
-  const { updateCountry } = useContext(SearchContext);
+  const {
+    updateCountry,
+    updateFlag,
+    updateActive,
+    updateCritical,
+    updateRecovered,
+    updatePopulation,
+    updateDeaths,
+  } = useContext(SearchContext);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/countries/United%20States")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        updateCountry(data.country);
+        updateFlag(data.countryInfo.flag);
+        updateActive(data.active);
+        updateCritical(data.critical);  
+        updateRecovered(data.recovered);
+        updatePopulation(data.population);
+        updateDeaths(data.deaths);
+      });
+  }, []);
+
   const handleClick = () => {
+    fetch("https://disease.sh/v3/covid-19/countries/United%20States")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+
     console.log(inputValue);
     updateCountry(inputValue);
     setInputValue("");
