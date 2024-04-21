@@ -5,9 +5,9 @@ const Deaths = () => {
   const { deaths } = useContext(SearchContext);
 
   return (
-    <div>
-      <p>Deaths</p>
-      <p>{deaths}</p>
+    <div className='flex justify-between text-white font-bold'>
+      <p className='text-xl my-6'>DEATHS</p>
+      <p className='text-xl my-6'>{deaths}</p>
     </div>
   );
 };
