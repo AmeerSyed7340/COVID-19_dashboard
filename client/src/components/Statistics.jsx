@@ -5,24 +5,24 @@ const Statistics = () => {
 
   return (
     <div>
-      <div className='flex justify-between my-6'>
-        <p className='text-xl'>Active</p>
-        <p className='text-xl text-blue-500'>{active}</p>
+      <div className='flex justify-between my-6 md:my-10'>
+        <p className='text-xl md:text-4xl'>Active</p>
+        <p className='text-xl md:text-4xl text-blue-500'>{active}</p>
       </div>
 
-      <div className='flex justify-between my-6'>
-        <p className='text-xl'>Critical</p>
-        <p className='text-xl text-pink-600'>{critical}</p>
+      <div className='flex justify-between my-6 md:my-10'>
+        <p className='text-xl md:text-4xl'>Critical</p>
+        <p className='text-xl md:text-4xl text-pink-600'>{critical}</p>
       </div>
 
-      <div className='flex justify-between my-6'>
-        <p className='text-xl'>Recovered</p>
-        <p className='text-xl text-green-500'>{recovered}</p>
+      <div className='flex justify-between my-6 md:my-10'>
+        <p className='text-xl md:text-4xl'>Recovered</p>
+        <p className='text-xl md:text-4xl text-green-500'>{recovered}</p>
       </div>
 
-      <div className='flex justify-between my-6'>
-        <p className='text-xl'>Population</p>
-        <p className='text-xl text-gray-500'>{population}</p>
+      <div className='flex justify-between my-6 md:my-10'>
+        <p className='text-xl md:text-4xl'>Population</p>
+        <p className='text-xl md:text-4xl text-gray-500'>{population}</p>
       </div>
     </div>
   );
