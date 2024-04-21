@@ -15,7 +15,7 @@ const Vaccination = () => {
           labels: chartLabels,
           datasets: [
             {
-              label: 'Global Vaccine Coverage',
+              label: 'Vaccine Coverage',
               data: chartValues,
               fill: false,
               borderColor: 'rgb(53, 162, 235)',
@@ -29,9 +29,8 @@ const Vaccination = () => {
   }, []);
 
   return (
-    <div>
-      
-      {chartData ? <Line data={chartData} /> : <p>Loading chart...</p>}
+    <div>      
+      {chartData ? <Line data={chartData} className='w-full'/> : <p>Loading chart...</p>}
     </div>
   );
 };
