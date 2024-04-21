@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import Navbar from "./components/Navbar";
 import { SearchContext } from "./context/SearchContext";
 import Statistics from "./components/Statistics";
+import Deaths from "./components/Deaths";
+import Vaccination from "./components/Vaccination";
 
 const App = () => {
   const { search, flag } = useContext(SearchContext);
@@ -10,7 +12,7 @@ const App = () => {
     <div>
       {/* context provider */}
 
-      <div className="flex justify-center items-center bg-off-white shadow-md py-4">
+      <div name='nav' className="flex justify-center items-center bg-off-white shadow-md py-4">
         <Navbar />
       </div>
 
@@ -33,19 +35,17 @@ const App = () => {
 
         {/*Deaths*/}
         <div>
-          <p></p>
-          <p></p>
+          <Deaths />
         </div>
       </div>
       {/*Vaccination info*/}
       <div>
-        <p></p>
-        <div>{/*bar chart*/}</div>
+        <Vaccination />
       </div>
 
       {/*Btn to scroll up*/}
       <div>
-        <button>Scroll up</button>
+        <button>Search for another country</button>
       </div>
     </div>
   );
