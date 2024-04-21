@@ -10,15 +10,13 @@ const App = () => {
   const { search, flag } = useContext(SearchContext);
   console.log(search);
 
- 
-
   // Scroll to the top of the page and focus on the input element
   const handleScroll = () => {
     document.getElementById("searchInput").focus();
   };
 
   return (
-    <div>
+    <div className='grid grid-cols-1 sm:hidden'>
       {/* context provider */}
 
       <div
@@ -29,10 +27,10 @@ const App = () => {
       </div>
 
       {/*main content holder*/}
-      <div className="grid grid-cols-1 px-6">
+      
         {/*Country name*/}
-        <div className="my-4">
-          <p className="capitalize underline font-bold mb-4">
+        <div className="my-4 mx-6">
+          <p className="capitalize underline font-bold mb-4 text-xl">
             Results for {search}
           </p>
           {/*Country flag*/}
@@ -42,19 +40,19 @@ const App = () => {
         </div>
 
         {/*Country Stats*/}
-        <div className="my-4 rounded-lg shadow-lg px-2 bg-off-white">
+        <div className="my-4 mx-6 px-2 rounded-lg shadow-lg bg-off-white">
           <Statistics />
         </div>
 
         {/*Deaths*/}
-        <div className="my-4 rounded-lg shadow-lg px-2 bg-gradient-to-b from-red-800 to-red-300">
+        <div className="my-4 rounded-lg shadow-lg mx-6 px-2 bg-gradient-to-b from-red-800 to-red-300">
           <Deaths />
         </div>
-      </div>
+      
 
       {/*Bottom section*/}
-      <div className="px-6 my-4">
-        <p className="capitalize underline font-bold mb-4">
+      <div className="mx-6 my-4 sm:hidden">
+        <p className="capitalize underline font-bold mb-4 text-xl">
           Global Vaccination for Last 30 days
         </p>
         {/*Vaccination info*/}

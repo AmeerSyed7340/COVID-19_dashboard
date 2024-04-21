@@ -29,8 +29,16 @@ const Vaccination = () => {
   }, []);
 
   return (
-    <div>      
-      {chartData ? <Line data={chartData} className='w-full'/> : <p>Loading chart...</p>}
+    <div style={{ height: '400px', width: '100%' }}> {/* Ensuring the div has a specific size */}
+      {chartData ? (
+        <Line 
+          data={chartData}
+          options={{
+            responsive: true,   // Make sure the chart is responsive
+            maintainAspectRatio: false  // Allow the chart to fill the container
+          }}
+        />
+      ) : <p>Loading chart...</p>}
     </div>
   );
 };
